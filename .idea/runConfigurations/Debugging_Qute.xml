@@ -1,0 +1,40 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Debugging Qute" type="DAPRunConfiguration" factoryName="DAPRunConfiguration">
+    <option name="attachAddress" value="localhost" />
+    <option name="attachConfiguration" value="{&#10;  &quot;type&quot;: &quot;qute&quot;,&#10;  &quot;name&quot;: &quot;Attach to process&quot;,&#10;  &quot;request&quot;: &quot;attach&quot;,&#10;  &quot;port&quot;: 12345&#10;}" />
+    <option name="attachConfigurationId" />
+    <option name="attachPort" value="$port" />
+    <option name="command" />
+    <option name="connectTimeout" value="1000" />
+    <option name="debugMode" value="ATTACH" />
+    <option name="debugServerReadyPattern" />
+    <option name="file" />
+    <option name="installerConfiguration" />
+    <option name="launchConfiguration" />
+    <option name="launchConfigurationId" />
+    <option name="serverId" value="none" />
+    <option name="serverMappings">
+      <list>
+        <ServerMappingSettings>
+          <option name="fileNamePatterns">
+            <list>
+              <option value="*.qute" />
+            </list>
+          </option>
+          <fileType>
+            <FileTypeSettings>
+              <option name="patterns">
+                <option value="*.qute" />
+              </option>
+            </FileTypeSettings>
+          </fileType>
+        </ServerMappingSettings>
+      </list>
+    </option>
+    <option name="serverName" />
+    <option name="serverTrace" value="verbose" />
+    <option name="serverUrl" />
+    <option name="workingDirectory" value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>

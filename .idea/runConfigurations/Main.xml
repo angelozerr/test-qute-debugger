@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="qute.debug.port" value="12345" />
+      <env name="qute.debug.suspend" value="true" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="Main" />
+    <module name="test-qute-debugger" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
