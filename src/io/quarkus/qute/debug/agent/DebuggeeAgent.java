@@ -121,21 +121,18 @@ public class DebuggeeAgent implements Debugger {
         sourceTemplateRegistry.registerSource(source);
         String templateId = sourceTemplateRegistry.getTemplateId(source);
         Map<Integer, RemoteBreakpoint> templateBreakpoints = this.breakpoints.computeIfAbsent(templateId, k -> new HashMap<>());
+        templateBreakpoints.clear();
 
         Breakpoint[] result = new Breakpoint[sourceBreakpoints.length];
-        if (sourceBreakpoints.length == 0) {
-            templateBreakpoints.clear();
-        } else {
-            for (int i = 0; i < sourceBreakpoints.length; i++) {
-                SourceBreakpoint sourceBreakpoint = sourceBreakpoints[i];
-                int line = sourceBreakpoint.getLine();
-                String condition = sourceBreakpoint.getCondition();
-                RemoteBreakpoint breakpoint = new RemoteBreakpoint(source, line, condition);
-                templateBreakpoints.put(line, breakpoint);
+        for (int i = 0; i < sourceBreakpoints.length; i++) {
+            SourceBreakpoint sourceBreakpoint = sourceBreakpoints[i];
+            int line = sourceBreakpoint.getLine();
+            String condition = sourceBreakpoint.getCondition();
+            RemoteBreakpoint breakpoint = new RemoteBreakpoint(source, line, condition);
+            templateBreakpoints.put(line, breakpoint);
 
-                breakpoint.setVerified(true);
-                result[i] = breakpoint;
-            }
+            breakpoint.setVerified(true);
+            result[i] = breakpoint;
         }
         return result;
     }
