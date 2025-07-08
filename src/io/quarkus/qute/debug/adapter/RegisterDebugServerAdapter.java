@@ -13,7 +13,10 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 public class RegisterDebugServerAdapter implements EngineListener {
 
@@ -31,7 +34,7 @@ public class RegisterDebugServerAdapter implements EngineListener {
     private volatile ServerSocket serverSocket;
     private Future<Void> launcherFuture;
     private DebugServerAdapter server;
-    private volatile boolean connectedToSocket;
+    //private volatile boolean connectedToSocket;
 
     private final ExecutorService executor = createDaemonExecutor();
 
@@ -68,10 +71,12 @@ public class RegisterDebugServerAdapter implements EngineListener {
         agent = createAgentIfNeeded();
 
         // If not yet initialized, attach a listener to lazily initialize the agent later
-        if (!initialized) {
+        initializeAgent(port, isSuspend());
+
+        /*if (!initialized) {
             notInitializedEngines.add(engine);
             engine.addTraceListener(initializeAgentListener);
-        }
+        }*/
 
         // Track the engine in the agent
         agent.track(engine);
@@ -130,7 +135,7 @@ public class RegisterDebugServerAdapter implements EngineListener {
      * asynchronously in a background thread.
      */
     private synchronized void initializeAgent(int port, boolean suspend) {
-        if (initialized || connectedToSocket) {
+        if (initialized) {
             return;
         }
         if (suspend) {
@@ -150,13 +155,12 @@ public class RegisterDebugServerAdapter implements EngineListener {
      * @param suspend whether to block on accept or run accept loop in background
      */
     private synchronized void initializeAgentBlocking(int port, boolean suspend) {
-        if (connectedToSocket) {
+        if (serverSocket != null) {
             return;
         }
 
         try {
             serverSocket = new ServerSocket(port);
-            connectedToSocket = true;
             log("DebugServerAdapter listening on port " + serverSocket.getLocalPort());
 
             if (suspend) {

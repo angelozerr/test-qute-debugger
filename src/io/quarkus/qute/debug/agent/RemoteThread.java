@@ -1,21 +1,15 @@
 package io.quarkus.qute.debug.agent;
 
+import io.quarkus.qute.TemplateNode;
+import io.quarkus.qute.debug.*;
+import io.quarkus.qute.debug.StoppedEvent.StoppedReason;
+import io.quarkus.qute.debug.ThreadEvent.ThreadStatus;
+import io.quarkus.qute.trace.ResolveEvent;
+import org.eclipse.lsp4j.debug.Thread;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
-
-import io.quarkus.qute.TemplateNode;
-import io.quarkus.qute.debug.agent.scopes.RemoteScope;
-import org.eclipse.lsp4j.debug.Thread;
-
-import io.quarkus.qute.debug.RemoteBreakpoint;
-import io.quarkus.qute.debug.DebuggerState;
-import io.quarkus.qute.debug.DebuggerStoppedException;
-import io.quarkus.qute.debug.StoppedEvent;
-import io.quarkus.qute.debug.StoppedEvent.StoppedReason;
-import io.quarkus.qute.debug.ThreadEvent;
-import io.quarkus.qute.debug.ThreadEvent.ThreadStatus;
-import io.quarkus.qute.trace.ResolveEvent;
 
 public class RemoteThread extends Thread{
 
@@ -187,17 +181,6 @@ public class RemoteThread extends Thread{
 
     public void exit() {
         this.agent.fireThreadEvent(new ThreadEvent(getId(), ThreadStatus.EXITED));
-    }
-
-    public io.quarkus.qute.debug.agent.scopes.RemoteScope getScope(int variablesReference) {
-        for (RemoteStackFrame frame : frames) {
-            for (RemoteScope scope : frame.getScopes()) {
-                if (variablesReference == scope.getVariablesReference()) {
-                    return scope;
-                }
-            }
-        }
-        return null;
     }
 
 }

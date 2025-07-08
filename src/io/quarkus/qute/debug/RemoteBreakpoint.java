@@ -1,6 +1,5 @@
 package io.quarkus.qute.debug;
 
-import io.quarkus.qute.Engine;
 import io.quarkus.qute.TemplateNode;
 import io.quarkus.qute.debug.agent.RemoteStackFrame;
 import org.eclipse.lsp4j.debug.Breakpoint;

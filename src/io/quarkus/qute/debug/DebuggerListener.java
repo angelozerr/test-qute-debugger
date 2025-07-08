@@ -3,7 +3,6 @@ package io.quarkus.qute.debug;
 import org.eclipse.lsp4j.debug.OutputEventArguments;
 
 import java.rmi.Remote;
-import java.rmi.RemoteException;
 
 public interface DebuggerListener extends Remote {
 

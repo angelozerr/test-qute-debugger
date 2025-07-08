@@ -1,16 +1,14 @@
 package io.quarkus.qute.debug.agent.scopes;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletionStage;
-
 import io.quarkus.qute.Mapper;
 import io.quarkus.qute.ResolutionContext;
-import io.quarkus.qute.debug.agent.variables.RemoteVariable;
 import io.quarkus.qute.debug.agent.variables.VariablesProvider;
 import io.quarkus.qute.debug.agent.variables.VariablesRegistry;
 import org.eclipse.lsp4j.debug.Scope;
 import org.eclipse.lsp4j.debug.Variable;
+
+import java.util.Collection;
+import java.util.Map;
 
 import static io.quarkus.qute.debug.agent.variables.VariablesHelper.fillVariable;
 

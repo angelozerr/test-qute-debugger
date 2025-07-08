@@ -1,21 +1,21 @@
 package io.quarkus.qute.debug.agent;
 
+import io.quarkus.qute.TemplateNode;
+import io.quarkus.qute.TextNode;
+import io.quarkus.qute.debug.agent.condition.ConditionalExpressionHelper;
+import io.quarkus.qute.debug.agent.scopes.GlobalsScope;
+import io.quarkus.qute.debug.agent.scopes.LocalsScope;
+import io.quarkus.qute.debug.agent.scopes.RemoteScope;
+import io.quarkus.qute.debug.agent.variables.VariablesRegistry;
+import io.quarkus.qute.trace.ResolveEvent;
+import org.eclipse.lsp4j.debug.StackFrame;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import io.quarkus.qute.TemplateNode;
-import io.quarkus.qute.TextNode;
-import io.quarkus.qute.debug.agent.condition.ConditionalExpressionHelper;
-import io.quarkus.qute.debug.agent.scopes.RemoteScope;
-import io.quarkus.qute.debug.agent.variables.VariablesRegistry;
-import org.eclipse.lsp4j.debug.StackFrame;
-import io.quarkus.qute.debug.agent.scopes.GlobalsScope;
-import io.quarkus.qute.debug.agent.scopes.LocalsScope;
-import io.quarkus.qute.trace.ResolveEvent;
 
 public class RemoteStackFrame extends StackFrame {
 

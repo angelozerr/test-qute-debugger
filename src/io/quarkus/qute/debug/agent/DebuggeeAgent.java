@@ -7,7 +7,6 @@ import io.quarkus.qute.debug.agent.variables.VariablesRegistry;
 import io.quarkus.qute.trace.ResolveEvent;
 import io.quarkus.qute.trace.TemplateEvent;
 import org.eclipse.lsp4j.debug.*;
-import org.eclipse.lsp4j.debug.Breakpoint;
 import org.eclipse.lsp4j.debug.Thread;
 import org.eclipse.lsp4j.jsonrpc.ResponseErrorException;
 import org.eclipse.lsp4j.jsonrpc.messages.ResponseError;

@@ -2,6 +2,7 @@ import io.quarkus.qute.Engine;
 import io.quarkus.qute.ReflectionValueResolver;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.UserTagSectionHelper;
+import io.quarkus.qute.debug.adapter.RegisterDebugServerAdapter;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,6 +16,7 @@ public class Main {
 
         Path templatesProjectPath = Paths.get("src/main/resources/templates/");
         Engine engine = Engine.builder()
+                .addEngineListener(new RegisterDebugServerAdapter()) // debug the engine
                 .addLocator(new ProjectTemplateLocator(templatesProjectPath))
                 .addDefaults()
                 .addValueResolver(new ReflectionValueResolver())

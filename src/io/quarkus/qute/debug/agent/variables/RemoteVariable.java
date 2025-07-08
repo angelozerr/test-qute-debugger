@@ -1,12 +1,10 @@
 package io.quarkus.qute.debug.agent.variables;
 
-import io.quarkus.qute.debug.agent.scopes.RemoteScope;
 import org.eclipse.lsp4j.debug.Variable;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import static io.quarkus.qute.debug.agent.variables.VariablesHelper.fillVariable;
 

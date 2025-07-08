@@ -1,11 +1,11 @@
 package io.quarkus.qute.debug.agent.scopes;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import io.quarkus.qute.ResolutionContext;
 import io.quarkus.qute.debug.agent.variables.VariablesRegistry;
 import org.eclipse.lsp4j.debug.Variable;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class LocalsScope extends RemoteScope {
 

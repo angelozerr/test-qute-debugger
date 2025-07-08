@@ -1,18 +1,17 @@
 package io.quarkus.qute.debug.adapter;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-
 import io.quarkus.qute.debug.DebuggerListener;
 import io.quarkus.qute.debug.StoppedEvent;
 import io.quarkus.qute.debug.ThreadEvent;
+import io.quarkus.qute.debug.agent.DebuggeeAgent;
 import org.eclipse.lsp4j.debug.*;
 import org.eclipse.lsp4j.debug.Thread;
 import org.eclipse.lsp4j.debug.services.IDebugProtocolClient;
 import org.eclipse.lsp4j.debug.services.IDebugProtocolServer;
 
-import io.quarkus.qute.debug.agent.DebuggeeAgent;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 import static io.quarkus.qute.debug.agent.RemoteStackFrame.EMPTY_STACK_FRAMES;
 

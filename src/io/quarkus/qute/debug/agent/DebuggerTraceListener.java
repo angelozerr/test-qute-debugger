@@ -2,7 +2,6 @@ package io.quarkus.qute.debug.agent;
 
 import io.quarkus.qute.trace.ResolveEvent;
 import io.quarkus.qute.trace.TemplateEvent;
-import io.quarkus.qute.trace.TraceListener;
 import io.quarkus.qute.trace.TraceListenerAdapter;
 
 public class DebuggerTraceListener extends TraceListenerAdapter {
